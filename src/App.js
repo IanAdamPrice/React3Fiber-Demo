@@ -6,13 +6,13 @@ import {Physics, useBox,usePlane} from "@react-three/cannon"
 function Box(props) {
   const [ref, api] = useBox(() => ({
     mass :1,  
-    position: [0, 2, 0],
+
     args: [1.5, 1.5, 1.5]
   }));
   return (
     <mesh onClick={() => {
       api.velocity.set(0, 2, 0)
-     }} ref={ref} position={[0, 2, 0]}>
+     }} ref={ref} >
       <boxBufferGeometry attach="geometry" args={[ 1.5, 1.5, 1.5]} />
       <meshLambertMaterial attach="material" color="hotpink" />
     </mesh>
@@ -43,7 +43,8 @@ function App() {
           angle={0.3}
         />
         <Physics>
-          <Box />
+          <Box position={[10, 15, 10]}/>
+          <Box position={[100, 200, 200]}/>
           <Plane />
         </Physics>
       </Canvas>
